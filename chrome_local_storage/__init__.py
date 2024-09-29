@@ -102,6 +102,15 @@ class ChromeLocalStorage():
         """
         trio.run(self._set_storage_item, url, key, value)
 
+    def get_all_keys(self, url):
+        """
+        Get all keys from local storage for the given URL.
+
+        :param url: Get all keys from page whose URL contains this value
+        :return: List of keys in local storage
+        """
+        return trio.run(self._get_all_storage_keys, url)
+
     def __init__(self, host='localhost', port=9222):
         """
         Construct an instance of the class.
